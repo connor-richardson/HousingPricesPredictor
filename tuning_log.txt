@@ -1,0 +1,102 @@
+Pre-Tuning Param Grid
+
+parameter_grid = {
+    'n_estimators': [100, 400, 800],
+    'max_depth': [3, 6, 9],
+    'learning_rate': [0.05, 0.1, 0.20],
+    'min_child_weight': [1, 10, 100]
+    }
+
+Training RMSE: 7675.538547880533
+Validation RMSE: 17787.355508900135
+
+
+'max_depth': [3, 6],
+Training RMSE: 11088.23051708432
+Validation RMSE: 17995.340730311276
+
+
+'max_depth': [3, 6], 'learning_rate': [0.05, 0.1],
+Training RMSE: 12271.440665219387
+Validation RMSE: 17602.466190849507
+
+
+'max_depth': [3, 6], 'learning_rate': [0.01, 0.005],
+Shit
+
+
+parameter_grid = {
+    'n_estimators': [800, 1200, 1600, 2000],
+    'max_depth': [3, 6],
+    'learning_rate': [0.01, 0.005],
+    'min_child_weight': [1, 10, 100]
+    }
+
+Training RMSE: 15156.303507122046
+Validation RMSE: 17352.429685781757
+
+
+parameter_grid = {
+    'n_estimators': [800, 1200, 1600, 2000],
+    'max_depth': [3, 6],
+    'learning_rate': [0.01, 0.005],
+    'min_child_weight': [1, 10, 100],
+    'reg_alpha': [0, 0.5, 1],
+    'reg_lambda': [1, 2, 5]
+    }
+
+Training RMSE: 13648.512886025348
+Validation RMSE: 17097.36728271344
+
+
+Param grid = RSCV - n_iter -> 10->15
+Training RMSE: 14575.446751300628
+Validation RMSE: 17192.16472699119
+
+
+n_iter->20
+Training RMSE: 12261.025731968757
+Validation RMSE: 16672.28886505989
+
+n_iter->25
+Training RMSE: 12261.025731968757
+Validation RMSE: 16672.28886505989
+
+
+
+adding gamma
+parameter_grid = {
+    'n_estimators': [800, 1200, 1600, 2000],
+    'max_depth': [3, 6],
+    'learning_rate': [0.01, 0.005],
+    'min_child_weight': [1, 10, 100],
+    'gamma': [0, 0.1, 0.2, 0.3]
+    }
+random_search = RandomizedSearchCV(
+    estimator=xgb_reg,
+    param_distributions=parameter_grid,
+    n_iter=25,
+    scoring='neg_root_mean_squared_error',
+    cv=cv_strategy,
+    verbose=2,
+    n_jobs=-1
+)
+Training RMSE: 14575.446751300628
+Validation RMSE: 17192.16472699119
+
+Best so far is: 
+parameter_grid = {
+    'n_estimators': [800, 1200, 1600, 2000],
+    'max_depth': [3, 6],
+    'learning_rate': [0.01, 0.005],
+    'min_child_weight': [1, 10, 100],
+    }
+random_search = RandomizedSearchCV(
+    estimator=xgb_reg,
+    param_distributions=parameter_grid,
+    n_iter=25,
+    scoring='neg_root_mean_squared_error',
+    cv=cv_strategy,
+    verbose=2,
+    n_jobs=-1
+)
